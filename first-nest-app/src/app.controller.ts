@@ -9,9 +9,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('/cats')
-  findAll(): string {
-    return 'This action returns all cats';
-  }
 }
