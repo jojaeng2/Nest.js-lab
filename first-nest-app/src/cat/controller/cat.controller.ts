@@ -4,6 +4,8 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Param,
+  ParseIntPipe,
   Post,
   UseFilters,
 } from '@nestjs/common';
@@ -36,5 +38,12 @@ export class CatsController {
   @UseFilters(new HttpExceptionFilter())
   async findAllV2() {
     throw new ForbiddenException();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log(id);
+    console.log(typeof id);
+    return this.catsService.findAll();
   }
 }
